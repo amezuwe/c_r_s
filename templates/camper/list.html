@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<table class="table table-borderless">
+    <thead class="border-bottom font-weight-bold">
+        <tr>
+            <td>Full Name</td>
+            <td>Gender</td>
+            <td>Phone</td>
+            <td>Different Class</td>
+            <td>
+                <a href="{% url 'camper:form' %}" class="btn btn-outline-success">
+                    <i class="fas fa-plus"></i>Add New
+                </a>
+
+            </td>
+        </tr>
+    </thead>
+    <tbody>
+        {% for camper in camper_list %}
+        <tr>
+            <td>{{ camper.first_name }} {{ camper.last_name }}</td>
+            {% if camper.gender == 'M' %}
+                <td>Male</td>
+            {% else %}
+                <td>Female</td>
+            {% endif %}
+            <td>{{ camper.phone }}</td>
+            <td>{{ camper.different_class }}</td>
+            <td>
+                <a href="{% url 'camper:update' camper.id %}" class="btn text-secondary px-0">
+                    <i class="far fa-edit fa-lg"></i>
+                </a>
+                 <form action="{% url 'camper:delete' camper.id %}" method="post" class="d-inline">
+                    {% csrf_token %}
+                    <button type="submit" class="btn">
+                        <i class="far fa-trash-alt fa-lg text-danger float-right"></i>
+                    </button>
+                </form>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

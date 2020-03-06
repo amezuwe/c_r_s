@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<div class="container">
+<form method="post" action="" autocomplete="on">
+    {% csrf_token %}
+    {{ form.first_name|as_crispy_field }}
+    {{ form.last_name|as_crispy_field }}
+    {{ form.date_of_birth|as_crispy_field }}
+     {{ form.email|as_crispy_field }}
+     {{ form.phone|as_crispy_field }}
+    <div class="row">
+        <div class="col-md-4">
+            {{ form.gender|as_crispy_field }}
+             </div>
+            <div class="col-md-8">
+              {{ form.different_class|as_crispy_field }}
+              {{ form.created_by.as_hidden }}
+            </div>
+    </div>
+    <div class="row">
+        <div class="col-md-8">
+             <button type="submit" class="btn btn-success btn-block btn-lg"><i class="fas fa-database mr-2"></i>Submit</button>
+        </div>
+        <div class="col-md-4">
+            <a href="{% url 'camper:list' %}" class="btn btn-secondary btn-block btn-lg">
+                <i class="fas fa-stream mr-2"></i>Back to list
+            </a>
+        </div>
+    </div>
+
+
+</form>
+</div>
+{% endblock %}

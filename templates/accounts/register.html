@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<div class="container">
+    <form method="post" action="" autocomplete="on">
+        {% csrf_token %}
+         {{ user_form.username|as_crispy_field }}
+         {{ profile_form.email|as_crispy_field }}
+         {{ profile_form.phone|as_crispy_field }}
+        <div class="row">
+            <div class="col-md-4">
+                {{ profile_form.district|as_crispy_field }}
+                 </div>
+                <div class="col-md-8">
+                  {{ profile_form.local_church|as_crispy_field }}
+                </div>
+        </div>
+         {{ user_form.password1|as_crispy_field }}
+         {{ user_form.password2|as_crispy_field }}
+
+          <button style="background-color: yellow; color: blue" type="submit" class="btn">Register</button>
+    </form>
+    <p>Already have an account? <a href="{% url 'accounts:login' %}"><strong>login here</strong></a>!</p>
+</div>
+{% endblock %}

@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block page_title %} 
+CampStar
+{% endblock %}
+
+{% block content %}
+<div class="row">
+<div class="col-md-6 m-auto">
+<div class="card text-center">
+    <div class="card-body">
+        <h1>Welcome To CampStar</h1>
+        <p>This is a camp registration software</p>
+        {% if user.is_authenticated %}
+        <a href="{% url 'camper:dashboard' %}" class="btn btn-dark">
+            Go to Dashboard
+        </a>
+        {% else %}
+        <a href="{% url 'accounts:login' %}" class="btn btn-dark">
+            Login In Here
+        </a>
+        {% endif %}
+    </div>
+</div>
+</div>
+</div>
+{% endblock %}

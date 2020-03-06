@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+  <h1 class="display-4">{{ user_profile.local_church }}</h1>
+  <h3 style="text-decoration: underline;">{{ user_profile.district }} District</h3>
+  <p class="lead">A quick snap at your activities</p>
+</div>
+
+<div class="container">
+  <div class="card-deck mb-3 text-center">
+    <div class="card mb-4 shadow-sm">
+      <div class="card-header">
+        <h4 class="my-0 font-weight-normal">Registered Campers</h4>
+      </div>
+      <div class="card-body">
+        <h1 class="card-title pricing-card-title">{{ gender_total }}</h1>
+        <ul class="list-unstyled mt-3 mb-4">
+          <li>Males: {{ gender_male }}</li>
+          <li>Females: {{ gender_female }}</li>
+        </ul>
+        <button type="button" class="btn btn-lg btn-block btn-outline-primary" onclick="window.location.href = '{% url 'camper:form' %}';"><i class="fas fa-plus"></i> Add camper</button>
+      </div>
+    </div>
+   
+    <div class="card mb-4 shadow-sm">
+      <div class="card-header">
+        <h4 class="my-0 font-weight-normal">Balance</h4>
+      </div>
+      <div class="card-body">
+        <h1 class="card-title pricing-card-title">GHS {{ user_profile.balance }}</h1>
+        <ul class="list-unstyled mt-3 mb-4">
+          <li>Registration is GHS 80 per camper</li>
+          <li>Registration ends on Sun., 9th August, 2020.</li>
+        </ul>
+        <button type="button" class="btn btn-lg btn-block btn-primary" onclick="window.location.href = '#';"><i class="fas fa-plus"></i> Add funds</button>
+      </div>
+    </div>
+  </div>
+
+  
+</div>
+
+{% endblock %}
